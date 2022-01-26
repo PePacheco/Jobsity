@@ -37,7 +37,9 @@ class ShowsListViewController: UIViewController, Coordinating {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.presenter?.fetchSeries()
+        if (searchController.searchBar.text ?? "").isEmpty  {
+            self.presenter?.fetchSeries()
+        }
     }
     
 }
@@ -47,12 +49,12 @@ extension ShowsListViewController: ShowsListPresenterDelegate {
         self.filteredShows = shows
         self.shows = shows
         seriesTableView.reloadData()
+        dismiss(animated: true, completion: nil)
     }
 }
 
 extension ShowsListViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
         filteredShows = shows
         
         if !searchText.isEmpty {
@@ -73,14 +75,13 @@ extension ShowsListViewController: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         let model = filteredShows[indexPath.row]
-        cell.configure(name: model.name, imageURL: model.mediumImage)
+        cell.configure(name: model.name, genres: model.genres.joined(separator: ", "), imageURL: model.mediumImage)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let show = filteredShows[indexPath.row]
-        searchController.searchBar.text = nil
         coordinator?.eventOccurred(with: .goToDetails(show: show))
     }
 }

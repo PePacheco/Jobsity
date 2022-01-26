@@ -29,6 +29,7 @@
 		6DE652FB27A0D4E40026835D /* ShowDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE652FA27A0D4E40026835D /* ShowDetailsViewController.swift */; };
 		6DE652FD27A0D6DD0026835D /* ShowDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE652FC27A0D6DD0026835D /* ShowDetailsPresenter.swift */; };
 		6DE652FF27A0D7440026835D /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE652FE27A0D7440026835D /* Episode.swift */; };
+		6DE6530127A18F090026835D /* ShowDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE6530027A18F090026835D /* ShowDetailsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		6DE652FA27A0D4E40026835D /* ShowDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsViewController.swift; sourceTree = "<group>"; };
 		6DE652FC27A0D6DD0026835D /* ShowDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsPresenter.swift; sourceTree = "<group>"; };
 		6DE652FE27A0D7440026835D /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
+		6DE6530027A18F090026835D /* ShowDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +219,7 @@
 				6DE652F827A0D4D30026835D /* ShowDetailsViewController.storyboard */,
 				6DE652FA27A0D4E40026835D /* ShowDetailsViewController.swift */,
 				6DE652FC27A0D6DD0026835D /* ShowDetailsPresenter.swift */,
+				6DE6530027A18F090026835D /* ShowDetailsTableViewCell.swift */,
 			);
 			path = "Show Details";
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 				6DE652E727A0B2960026835D /* MainCoordinator.swift in Sources */,
 				6DE652E027A0B1420026835D /* Extensions.swift in Sources */,
 				6DE652B427A0B0A60026835D /* Jobsity_Test.xcdatamodeld in Sources */,
+				6DE6530127A18F090026835D /* ShowDetailsTableViewCell.swift in Sources */,
 				6DE652FB27A0D4E40026835D /* ShowDetailsViewController.swift in Sources */,
 				6DE652AA27A0B0A60026835D /* AppDelegate.swift in Sources */,
 				6DE652EF27A0BA7D0026835D /* Show.swift in Sources */,

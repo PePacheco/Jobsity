@@ -14,7 +14,7 @@ struct Show: Codable {
     let genres: [String]
     let schedule: Schedule
     let image: Image
-    let summary: String?
+    let summary: String
 
     var mediumImage: URL? {
         return URL(string: self.image.medium)

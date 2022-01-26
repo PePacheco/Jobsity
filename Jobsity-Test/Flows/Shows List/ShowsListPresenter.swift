@@ -25,7 +25,9 @@ class ShowsListPresenter {
             self.view?.presentLoadingScreen {
                 WebService.get(path: "https://api.tvmaze.com/shows?page=0", type: [Show].self) {[weak self] result in
                     guard let self = self else {
-                        self?.view?.dismiss(animated: true, completion: nil)
+                        DispatchQueue.main.async {
+                            self?.view?.dismiss(animated: true, completion: nil)
+                        }
                         return
                     }
                     DispatchQueue.main.async {
@@ -34,7 +36,7 @@ class ShowsListPresenter {
                         case .success(let shows):
                             self.view?.showsListPresenterDelegate(fetched: shows)
                         case .failure(_):
-                            self.view?.presentAlert(message: "Something went wrong")
+                            self.view?.presentAlert(message: "Something went wrong while fetching the movies")
                         }
                     }
                 }
