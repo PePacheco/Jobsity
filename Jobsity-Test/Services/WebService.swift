@@ -15,23 +15,6 @@ enum WebServiceError: Error {
 }
 
 struct WebService {
-    // MARK:- Index
-    static func index<T: Codable>(path: String, type: T.Type, handler: @escaping (Result<[T], WebServiceError>) -> Void) {
-        guard let url = URL(string: path) else { handler(.failure(.badUrlError)); return }
-        
-        let request = URLRequest(url: url)
-        
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
-            guard error == nil, let data = data  else { handler(.failure(.noDataError)); return }
-            
-            guard let data = try? JSONDecoder().decode([T].self, from: data) else { handler(.failure(.parsingJsonError)); return }
-            
-            handler(.success(data))
-            
-        }
-        .resume()
-    }
-    
     // MARK:- Get
     static func get<T:Codable>(path: String, type: T.Type, handler: @escaping (Result<T, WebServiceError>) -> Void) {
         guard let url = URL(string: path) else { handler(.failure(.badUrlError)); return }
@@ -40,7 +23,6 @@ struct WebService {
 
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard error == nil, let data = data  else { handler(.failure(.noDataError)); return }
-            
             guard let data = try? JSONDecoder().decode(T.self, from: data) else { handler(.failure(.parsingJsonError)); return }
             
             handler(.success(data))

@@ -21,6 +21,10 @@
 		6DE652E727A0B2960026835D /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE652E627A0B2960026835D /* MainCoordinator.swift */; };
 		6DE652EA27A0B3080026835D /* ShowsListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DE652E927A0B3080026835D /* ShowsListViewController.storyboard */; };
 		6DE652EC27A0B3340026835D /* ShowsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE652EB27A0B3340026835D /* ShowsListViewController.swift */; };
+		6DE652EF27A0BA7D0026835D /* Serie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE652EE27A0BA7D0026835D /* Serie.swift */; };
+		6DE652F127A0BC3A0026835D /* ShowsListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE652F027A0BC3A0026835D /* ShowsListPresenter.swift */; };
+		6DE652F327A0C2830026835D /* ShowsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE652F227A0C2830026835D /* ShowsListTableViewCell.swift */; };
+		6DE652F627A0D1730026835D /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 6DE652F527A0D1730026835D /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +63,9 @@
 		6DE652E627A0B2960026835D /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		6DE652E927A0B3080026835D /* ShowsListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShowsListViewController.storyboard; sourceTree = "<group>"; };
 		6DE652EB27A0B3340026835D /* ShowsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsListViewController.swift; sourceTree = "<group>"; };
+		6DE652EE27A0BA7D0026835D /* Serie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serie.swift; sourceTree = "<group>"; };
+		6DE652F027A0BC3A0026835D /* ShowsListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsListPresenter.swift; sourceTree = "<group>"; };
+		6DE652F227A0C2830026835D /* ShowsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DE652F627A0D1730026835D /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,6 +187,8 @@
 			children = (
 				6DE652E927A0B3080026835D /* ShowsListViewController.storyboard */,
 				6DE652EB27A0B3340026835D /* ShowsListViewController.swift */,
+				6DE652F027A0BC3A0026835D /* ShowsListPresenter.swift */,
+				6DE652F227A0C2830026835D /* ShowsListTableViewCell.swift */,
 			);
 			path = "Shows List";
 			sourceTree = "<group>";
@@ -186,6 +196,7 @@
 		6DE652ED27A0B5FF0026835D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				6DE652EE27A0BA7D0026835D /* Serie.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -206,6 +217,9 @@
 			dependencies = (
 			);
 			name = "Jobsity-Test";
+			packageProductDependencies = (
+				6DE652F527A0D1730026835D /* Kingfisher */,
+			);
 			productName = "Jobsity-Test";
 			productReference = 6DE652A627A0B0A60026835D /* Jobsity-Test.app */;
 			productType = "com.apple.product-type.application";
@@ -278,6 +292,9 @@
 				Base,
 			);
 			mainGroup = 6DE6529D27A0B0A60026835D;
+			packageReferences = (
+				6DE652F427A0D1730026835D /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 6DE652A727A0B0A60026835D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -326,7 +343,10 @@
 				6DE652E027A0B1420026835D /* Extensions.swift in Sources */,
 				6DE652B427A0B0A60026835D /* Jobsity_Test.xcdatamodeld in Sources */,
 				6DE652AA27A0B0A60026835D /* AppDelegate.swift in Sources */,
+				6DE652EF27A0BA7D0026835D /* Serie.swift in Sources */,
+				6DE652F327A0C2830026835D /* ShowsListTableViewCell.swift in Sources */,
 				6DE652AC27A0B0A60026835D /* SceneDelegate.swift in Sources */,
+				6DE652F127A0BC3A0026835D /* ShowsListPresenter.swift in Sources */,
 				6DE652E527A0B2700026835D /* Coordinator.swift in Sources */,
 				6DE652EC27A0B3340026835D /* ShowsListViewController.swift in Sources */,
 			);
@@ -662,6 +682,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6DE652F427A0D1730026835D /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6DE652F527A0D1730026835D /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6DE652F427A0D1730026835D /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		6DE652B227A0B0A60026835D /* Jobsity_Test.xcdatamodeld */ = {
