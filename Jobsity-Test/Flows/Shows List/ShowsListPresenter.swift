@@ -21,19 +21,21 @@ class ShowsListPresenter {
     }
     
     func fetchSeries() {
-        self.view?.presentLoadingScreen {
-            WebService.get(path: "https://api.tvmaze.com/shows?page=0", type: [Show].self) {[weak self] result in
-                guard let self = self else {
-                    self?.view?.dismiss(animated: true, completion: nil)
-                    return
-                }
-                DispatchQueue.main.async {
-                    self.view?.dismiss(animated: true, completion: nil)
-                    switch result {
-                    case .success(let shows):
-                        self.view?.showsListPresenterDelegate(fetched: shows)
-                    case .failure(_):
-                        self.view?.presentAlert(message: "Something went wrong")
+        DispatchQueue.main.async {
+            self.view?.presentLoadingScreen {
+                WebService.get(path: "https://api.tvmaze.com/shows?page=0", type: [Show].self) {[weak self] result in
+                    guard let self = self else {
+                        self?.view?.dismiss(animated: true, completion: nil)
+                        return
+                    }
+                    DispatchQueue.main.async {
+                        self.view?.dismiss(animated: true, completion: nil)
+                        switch result {
+                        case .success(let shows):
+                            self.view?.showsListPresenterDelegate(fetched: shows)
+                        case .failure(_):
+                            self.view?.presentAlert(message: "Something went wrong")
+                        }
                     }
                 }
             }
