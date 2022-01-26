@@ -13,7 +13,14 @@ struct Episode: Codable {
     let name: String
     let season: Int
     let number: Int
-//    let type, airdate, airtime: String
-//    let image: Image
-//    let summary: String
+    let image: Image
+    let summary: String
+    
+    var mediumImage: URL? {
+        return URL(string: self.image.medium)
+    }
+    
+    var originalImage: URL? {
+        return URL(string: self.image.original)
+    }
 }

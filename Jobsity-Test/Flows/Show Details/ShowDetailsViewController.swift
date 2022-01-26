@@ -91,6 +91,7 @@ extension ShowDetailsViewController: UITableViewDataSource, UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        print(seasons[indexPath.section + 1, default: []][indexPath.row])
+        let episode = seasons[indexPath.section + 1, default: []][indexPath.row]
+        coordinator?.eventOccurred(with: .goToEpisodeDetails(episode: episode))
     }
 }

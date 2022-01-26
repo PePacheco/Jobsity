@@ -13,11 +13,16 @@ class MainCoordinator: Coordinator {
     
     func eventOccurred(with type: CoordinatorEvent) {
         switch type {
-        case .goToDetails(let show):
+        case .goToSeasonDetails(let show):
             let vc: ShowDetailsViewController & Coordinating = ShowDetailsViewController.instantiate()
             vc.setShow(show: show)
             vc.coordinator = self
+            navigationController?.pushViewController(vc, animated: true)
             
+        case .goToEpisodeDetails(let episode):
+            let vc: EpisodeDetailsViewController & Coordinating = EpisodeDetailsViewController.instantiate()
+            vc.setEpisode(episode: episode)
+            vc.coordinator = self
             navigationController?.pushViewController(vc, animated: true)
         }
     }

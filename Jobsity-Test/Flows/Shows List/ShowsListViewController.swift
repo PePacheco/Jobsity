@@ -82,6 +82,6 @@ extension ShowsListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let show = filteredShows[indexPath.row]
-        coordinator?.eventOccurred(with: .goToDetails(show: show))
+        coordinator?.eventOccurred(with: .goToSeasonDetails(show: show))
     }
 }

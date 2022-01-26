@@ -8,7 +8,8 @@
 import UIKit
 
 enum CoordinatorEvent {
-    case goToDetails(show: Show)
+    case goToSeasonDetails(show: Show)
+    case goToEpisodeDetails(episode: Episode)
 }
 
 protocol Coordinator {
