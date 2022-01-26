@@ -29,6 +29,7 @@ class ShowsListViewController: UIViewController, Coordinating {
         title = "Shows"
         navigationController?.navigationBar.prefersLargeTitles = true
         presenter = ShowsListPresenter(view: self)
+        
         seriesTableView.dataSource = self
         seriesTableView.delegate = self
         searchController.searchBar.delegate = self
@@ -74,14 +75,38 @@ extension ShowsListViewController: UITableViewDataSource, UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "showsListCell", for: indexPath) as? ShowsListTableViewCell else {
             return UITableViewCell()
         }
+        cell.delegate = self
         let model = filteredShows[indexPath.row]
-        cell.configure(name: model.name, genres: model.genres.joined(separator: ", "), imageURL: model.mediumImage)
+        let isFavorite = Favorite.all().contains(where: { favorite in
+            return favorite.name == model.name
+        })
+        cell.configure(name: model.name, genres: model.genres.joined(separator: ", "), imageURL: model.mediumImage, isFavorite: isFavorite)
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+}
+
+extension ShowsListViewController: ShowsListTableViewCellDelegate {
+    func showsListTableViewCell(detail cell: UITableViewCell) {
+        guard let indexPath = seriesTableView.indexPath(for: cell) else { return }
         let show = filteredShows[indexPath.row]
         coordinator?.eventOccurred(with: .goToSeasonDetails(show: show))
+    }
+    
+    func showsListTableViewCell(favorite cell: UITableViewCell) {
+        guard let indexPath = seriesTableView.indexPath(for: cell) else { return }
+        let show = filteredShows[indexPath.row]
+        if !Favorite.all().contains(where: { favorite in
+            return favorite.name == show.name
+        }) {
+            let favorite = Favorite(name: show.name)
+            let _ = favorite.save()
+        } else {
+            guard let favorite = Favorite.all().first(where: { favorite in
+                return favorite.name == show.name
+            }) else { return }
+            let _ = favorite.destroy()
+        }
+        seriesTableView.reloadData()
     }
 }
