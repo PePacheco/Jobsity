@@ -35,10 +35,10 @@ class ShowsListTableViewCell: UITableViewCell {
         genresLabel.text = genres
         if isFavorite {
             heartButton.tintColor = .red
-            heartButton.imageView?.image = UIImage(systemName: "heart.fill")
+            heartButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         } else {
             heartButton.tintColor = .label
-            heartButton.imageView?.image = UIImage(systemName: "heart")
+            heartButton.setImage(UIImage(systemName: "heart"), for: .normal)
         }
     }
     
