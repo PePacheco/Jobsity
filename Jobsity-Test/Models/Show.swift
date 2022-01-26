@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Serie: Codable {
+struct Show: Codable {
     let id: Int
     let url: String
     let name, type, language: String

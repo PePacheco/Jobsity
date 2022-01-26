@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol ShowsListPresenterDelegate: AnyObject {
-    func showsListPresenterDelegate(fetched series: [Serie])
+    func showsListPresenterDelegate(fetched shows: [Show])
 }
 
 class ShowsListPresenter {
@@ -22,7 +22,7 @@ class ShowsListPresenter {
     
     func fetchSeries() {
         self.view?.presentLoadingScreen {
-            WebService.get(path: "https://api.tvmaze.com/shows?page=0", type: [Serie].self) {[weak self] result in
+            WebService.get(path: "https://api.tvmaze.com/shows?page=0", type: [Show].self) {[weak self] result in
                 guard let self = self else {
                     self?.view?.dismiss(animated: true, completion: nil)
                     return
@@ -30,8 +30,8 @@ class ShowsListPresenter {
                 DispatchQueue.main.async {
                     self.view?.dismiss(animated: true, completion: nil)
                     switch result {
-                    case .success(let series):
-                        self.view?.showsListPresenterDelegate(fetched: series)
+                    case .success(let shows):
+                        self.view?.showsListPresenterDelegate(fetched: shows)
                     case .failure(_):
                         self.view?.presentAlert(message: "Something went wrong")
                     }

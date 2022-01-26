@@ -20,13 +20,13 @@ class ShowsListViewController: UIViewController, Coordinating {
     
     var coordinator: Coordinator?
     private var presenter: ShowsListPresenter?
-    private var series = [Serie]()
-    private var filteredSeries = [Serie]()
+    private var shows = [Show]()
+    private var filteredShows = [Show]()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Series"
+        title = "Shows"
         navigationController?.navigationBar.prefersLargeTitles = true
         presenter = ShowsListPresenter(view: self)
         seriesTableView.dataSource = self
@@ -43,9 +43,9 @@ class ShowsListViewController: UIViewController, Coordinating {
 }
 
 extension ShowsListViewController: ShowsListPresenterDelegate {
-    func showsListPresenterDelegate(fetched series: [Serie]) {
-        self.series = series
-        self.filteredSeries = series
+    func showsListPresenterDelegate(fetched shows: [Show]) {
+        self.filteredShows = shows
+        self.shows = shows
         seriesTableView.reloadData()
     }
 }
@@ -53,10 +53,10 @@ extension ShowsListViewController: ShowsListPresenterDelegate {
 extension ShowsListViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
-        filteredSeries = series
+        filteredShows = shows
         
         if !searchText.isEmpty {
-            filteredSeries = series.filter { $0.name.lowercased().contains(searchText.lowercased())  }
+            filteredShows = shows.filter { $0.name.lowercased().contains(searchText.lowercased())  }
         }
         seriesTableView.reloadData()
         
@@ -65,20 +65,20 @@ extension ShowsListViewController: UISearchBarDelegate {
 
 extension ShowsListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredSeries.count
+        return filteredShows.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "showsListCell", for: indexPath) as? ShowsListTableViewCell else {
             return UITableViewCell()
         }
-        let model = filteredSeries[indexPath.row]
+        let model = filteredShows[indexPath.row]
         cell.configure(name: model.name, imageURL: model.mediumImage)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        print(filteredSeries[indexPath.row])
+        print(filteredShows[indexPath.row])
     }
 }
