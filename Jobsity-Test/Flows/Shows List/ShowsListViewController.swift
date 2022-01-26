@@ -79,6 +79,8 @@ extension ShowsListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        print(filteredShows[indexPath.row])
+        let show = filteredShows[indexPath.row]
+        searchController.searchBar.text = nil
+        coordinator?.eventOccurred(with: .goToDetails(show: show))
     }
 }

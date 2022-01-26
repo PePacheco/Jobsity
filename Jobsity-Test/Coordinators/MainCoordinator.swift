@@ -13,8 +13,12 @@ class MainCoordinator: Coordinator {
     
     func eventOccurred(with type: CoordinatorEvent) {
         switch type {
-        case .goToDetails:
-            break
+        case .goToDetails(let show):
+            let vc: ShowDetailsViewController & Coordinating = ShowDetailsViewController.instantiate()
+            vc.setShow(show: show)
+            vc.coordinator = self
+            
+            navigationController?.pushViewController(vc, animated: true)
         }
     }
     
