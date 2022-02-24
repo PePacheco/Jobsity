@@ -20,17 +20,17 @@ class ShowDetailsPresenter {
     }
 
     func fetchEpisodes(showId: Int) {
-        WebService.get(path: "https://api.tvmaze.com/shows/\(showId)/episodes", type: [Episode].self) {[weak self] result in
-            guard let self = self else { return }
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let episodes):
-                    self.view?.showDetailsPresenterDelegate(fetched: episodes)
-                case .failure(_):
-                    self.view?.presentAlert(message: "Something went wrong when searching for the show episodes")
-                }
-            }
-        }
+//        WebService.get(path: "https://api.tvmaze.com/shows/\(showId)/episodes", type: [Episode].self) {[weak self] result in
+//            guard let self = self else { return }
+//            DispatchQueue.main.async {
+//                switch result {
+//                case .success(let episodes):
+//                    self.view?.showDetailsPresenterDelegate(fetched: episodes)
+//                case .failure(_):
+//                    self.view?.presentAlert(message: "Something went wrong when searching for the show episodes")
+//                }
+//            }
+//        }
     }
     
 }

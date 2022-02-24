@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D3E168D27C46B36005202C2 /* ShowsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3E168C27C46B36005202C2 /* ShowsListViewModel.swift */; };
+		6D3E168F27C46BA2005202C2 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3E168E27C46BA2005202C2 /* Box.swift */; };
 		6D63D6F027A1D736009DF210 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D63D6EF27A1D736009DF210 /* Protocols.swift */; };
 		6D63D6F227A1D745009DF210 /* CoreDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D63D6F127A1D745009DF210 /* CoreDataExtensions.swift */; };
 		6D63D6F827A1D8B9009DF210 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D63D6F727A1D8B9009DF210 /* Favorite.swift */; };
@@ -25,7 +27,6 @@
 		6DE652EA27A0B3080026835D /* ShowsListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DE652E927A0B3080026835D /* ShowsListViewController.storyboard */; };
 		6DE652EC27A0B3340026835D /* ShowsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE652EB27A0B3340026835D /* ShowsListViewController.swift */; };
 		6DE652EF27A0BA7D0026835D /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE652EE27A0BA7D0026835D /* Show.swift */; };
-		6DE652F127A0BC3A0026835D /* ShowsListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE652F027A0BC3A0026835D /* ShowsListPresenter.swift */; };
 		6DE652F327A0C2830026835D /* ShowsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE652F227A0C2830026835D /* ShowsListTableViewCell.swift */; };
 		6DE652F627A0D1730026835D /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 6DE652F527A0D1730026835D /* Kingfisher */; };
 		6DE652F927A0D4D30026835D /* ShowDetailsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DE652F827A0D4D30026835D /* ShowDetailsViewController.storyboard */; };
@@ -55,6 +56,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6D3E168C27C46B36005202C2 /* ShowsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsListViewModel.swift; sourceTree = "<group>"; };
+		6D3E168E27C46BA2005202C2 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		6D63D6EF27A1D736009DF210 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		6D63D6F127A1D745009DF210 /* CoreDataExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataExtensions.swift; sourceTree = "<group>"; };
 		6D63D6F727A1D8B9009DF210 /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
@@ -77,7 +80,6 @@
 		6DE652E927A0B3080026835D /* ShowsListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShowsListViewController.storyboard; sourceTree = "<group>"; };
 		6DE652EB27A0B3340026835D /* ShowsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsListViewController.swift; sourceTree = "<group>"; };
 		6DE652EE27A0BA7D0026835D /* Show.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Show.swift; sourceTree = "<group>"; };
-		6DE652F027A0BC3A0026835D /* ShowsListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsListPresenter.swift; sourceTree = "<group>"; };
 		6DE652F227A0C2830026835D /* ShowsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsListTableViewCell.swift; sourceTree = "<group>"; };
 		6DE652F827A0D4D30026835D /* ShowDetailsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShowDetailsViewController.storyboard; sourceTree = "<group>"; };
 		6DE652FA27A0D4E40026835D /* ShowDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsViewController.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				6DE652AB27A0B0A60026835D /* SceneDelegate.swift */,
 				6DE652A927A0B0A60026835D /* AppDelegate.swift */,
 				6DE652DF27A0B1420026835D /* Extensions.swift */,
+				6D3E168E27C46BA2005202C2 /* Box.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -219,8 +222,8 @@
 			children = (
 				6DE652E927A0B3080026835D /* ShowsListViewController.storyboard */,
 				6DE652EB27A0B3340026835D /* ShowsListViewController.swift */,
-				6DE652F027A0BC3A0026835D /* ShowsListPresenter.swift */,
 				6DE652F227A0C2830026835D /* ShowsListTableViewCell.swift */,
+				6D3E168C27C46B36005202C2 /* ShowsListViewModel.swift */,
 			);
 			path = "Shows List";
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 				6DE652E027A0B1420026835D /* Extensions.swift in Sources */,
 				6DE652B427A0B0A60026835D /* Jobsity_Test.xcdatamodeld in Sources */,
 				6DE6530127A18F090026835D /* ShowDetailsTableViewCell.swift in Sources */,
+				6D3E168D27C46B36005202C2 /* ShowsListViewModel.swift in Sources */,
 				6DE652FB27A0D4E40026835D /* ShowDetailsViewController.swift in Sources */,
 				6D63D6F227A1D745009DF210 /* CoreDataExtensions.swift in Sources */,
 				6DE6530627A1994B0026835D /* EpisodeDetailsViewController.swift in Sources */,
@@ -408,9 +412,9 @@
 				6D63D6F827A1D8B9009DF210 /* Favorite.swift in Sources */,
 				6DE652EF27A0BA7D0026835D /* Show.swift in Sources */,
 				6DE652F327A0C2830026835D /* ShowsListTableViewCell.swift in Sources */,
+				6D3E168F27C46BA2005202C2 /* Box.swift in Sources */,
 				6DE652FF27A0D7440026835D /* Episode.swift in Sources */,
 				6DE652AC27A0B0A60026835D /* SceneDelegate.swift in Sources */,
-				6DE652F127A0BC3A0026835D /* ShowsListPresenter.swift in Sources */,
 				6DE652E527A0B2700026835D /* Coordinator.swift in Sources */,
 				6DE652EC27A0B3340026835D /* ShowsListViewController.swift in Sources */,
 			);
