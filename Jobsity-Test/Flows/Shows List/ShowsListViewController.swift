@@ -19,16 +19,14 @@ class ShowsListViewController: UIViewController, Coordinating {
     }()
     
     var coordinator: Coordinator?
-    private var presenter: ShowsListPresenter?
-    private var shows = [Show]()
-    private var filteredShows = [Show]()
+    private let viewModel = ShowsListViewModel()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Shows"
         navigationController?.navigationBar.prefersLargeTitles = true
-        presenter = ShowsListPresenter(view: self)
+        bindViewModel()
         
         seriesTableView.dataSource = self
         seriesTableView.delegate = self
@@ -39,36 +37,39 @@ class ShowsListViewController: UIViewController, Coordinating {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if (searchController.searchBar.text ?? "").isEmpty  {
-            self.presenter?.fetchSeries()
+            viewModel.fetchShows()
+        }
+    }
+    
+    private func bindViewModel() {
+        viewModel.isLoading.bind {[weak self] isLoading in
+            DispatchQueue.main.async {
+                if isLoading {
+                    self?.presentLoadingScreen(completion: nil)
+                } else {
+                    self?.dismiss(animated: true, completion: nil)
+                }
+            }
+        }
+        
+        viewModel.filteredShows.bind { [weak self] shows in
+            DispatchQueue.main.async {
+                self?.seriesTableView.reloadData()
+            }
         }
     }
     
 }
 
-extension ShowsListViewController: ShowsListPresenterDelegate {
-    func showsListPresenterDelegate(fetched shows: [Show]) {
-        self.filteredShows = shows
-        self.shows = shows
-        seriesTableView.reloadData()
-        dismiss(animated: true, completion: nil)
-    }
-}
-
 extension ShowsListViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredShows = shows
-        
-        if !searchText.isEmpty {
-            filteredShows = shows.filter { $0.name.lowercased().contains(searchText.lowercased())  }
-        }
-        seriesTableView.reloadData()
-        
+        viewModel.filterShows(query: searchText)
     }
 }
 
 extension ShowsListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredShows.count
+        return viewModel.filteredShows.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -76,11 +77,8 @@ extension ShowsListViewController: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         cell.delegate = self
-        let model = filteredShows[indexPath.row]
-        let isFavorite = Favorite.all().contains(where: { favorite in
-            return favorite.name == model.name
-        })
-        cell.configure(name: model.name, genres: model.genres.joined(separator: ", "), imageURL: model.mediumImage, isFavorite: isFavorite)
+        let cellViewModel = viewModel.fetchCellViewModel(at: indexPath)
+        cell.configure(name: cellViewModel.name, genres: cellViewModel.genres, imageURL: cellViewModel.imageURL, isFavorite: cellViewModel.isFavorite)
         return cell
     }
     
@@ -89,24 +87,12 @@ extension ShowsListViewController: UITableViewDataSource, UITableViewDelegate {
 extension ShowsListViewController: ShowsListTableViewCellDelegate {
     func showsListTableViewCell(detail cell: UITableViewCell) {
         guard let indexPath = seriesTableView.indexPath(for: cell) else { return }
-        let show = filteredShows[indexPath.row]
+        let show = viewModel.fetchShow(at: indexPath)
         coordinator?.eventOccurred(with: .goToSeasonDetails(show: show))
     }
     
     func showsListTableViewCell(favorite cell: UITableViewCell) {
         guard let indexPath = seriesTableView.indexPath(for: cell) else { return }
-        let show = filteredShows[indexPath.row]
-        if !Favorite.all().contains(where: { favorite in
-            return favorite.name == show.name
-        }) {
-            let favorite = Favorite(name: show.name)
-            let _ = favorite.save()
-        } else {
-            guard let favorite = Favorite.all().first(where: { favorite in
-                return favorite.name == show.name
-            }) else { return }
-            let _ = favorite.destroy()
-        }
-        seriesTableView.reloadData()
+        viewModel.favoriteShow(indexPath: indexPath)
     }
 }
