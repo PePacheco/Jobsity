@@ -33,11 +33,10 @@ class ShowsListTableViewCell: UITableViewCell {
         serieImageView.kf.setImage(with: imageURL)
         serieNameLabel.text = name
         genresLabel.text = genres
+        heartButton.tintColor = isFavorite ? .red : .label
         if isFavorite {
-            heartButton.tintColor = .red
             heartButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         } else {
-            heartButton.tintColor = .label
             heartButton.setImage(UIImage(systemName: "heart"), for: .normal)
         }
     }
@@ -47,8 +46,6 @@ class ShowsListTableViewCell: UITableViewCell {
     }
     
     @IBAction func didTapFavorite(_ sender: Any) {
-        heartButton.imageView?.image = UIImage(systemName: "heart.fill")
-        heartButton.imageView?.tintColor = .red
         self.delegate?.showsListTableViewCell(favorite: self)
     }
     

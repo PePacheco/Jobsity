@@ -77,11 +77,8 @@ extension ShowsListViewController: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         cell.delegate = self
-        let model = viewModel.fetchShow(at: indexPath)
-        let isFavorite = Favorite.all().contains(where: { favorite in
-            return favorite.name == model.name
-        })
-        cell.configure(name: model.name, genres: model.genres.joined(separator: ", "), imageURL: model.mediumImage, isFavorite: isFavorite)
+        let cellViewModel = viewModel.fetchCellViewModel(at: indexPath)
+        cell.configure(name: cellViewModel.name, genres: cellViewModel.genres, imageURL: cellViewModel.imageURL, isFavorite: cellViewModel.isFavorite)
         return cell
     }
     

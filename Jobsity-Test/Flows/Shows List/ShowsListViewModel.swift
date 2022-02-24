@@ -42,6 +42,10 @@ class ShowsListViewModel {
         return filteredShows.value[indexPath.row]
     }
     
+    func fetchCellViewModel(at indexPath: IndexPath) -> ShowsListCellViewModel {
+        return ShowsListCellViewModel(with: fetchShow(at: indexPath))
+    }
+    
     func filterShows(query: String) {
         filteredShows.value = shows.value
         
@@ -64,6 +68,24 @@ class ShowsListViewModel {
             let _ = favorite.destroy()
         }
         filteredShows.fire()
+    }
+    
+}
+
+class ShowsListCellViewModel {
+    
+    let isFavorite: Bool
+    let name: String
+    let genres: String
+    let imageURL: URL?
+    
+    init(with model: Show) {
+        self.isFavorite = Favorite.all().contains(where: { favorite in
+            return favorite.name == model.name
+        })
+        self.name = model.name
+        self.genres = model.genres.joined(separator: ", ")
+        self.imageURL = model.mediumImage
     }
     
 }

@@ -32,4 +32,18 @@ struct WebService {
         .resume()
     }
     
+    func fetchEpisodes(showId: Int,handler: @escaping (Result<[Episode], WebServiceError>) -> Void) {
+        guard let url = URL(string: "https://api.tvmaze.com/shows/\(showId)/episodes") else { handler(.failure(.badUrlError)); return }
+        
+        let request = URLRequest(url: url)
+
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard error == nil, let data = data  else { handler(.failure(.noDataError)); return }
+            guard let data = try? JSONDecoder().decode([Episode].self, from: data) else { handler(.failure(.parsingJsonError)); return }
+            
+            handler(.success(data))
+        }
+        .resume()
+    }
+    
 }
