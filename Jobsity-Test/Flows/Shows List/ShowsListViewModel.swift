@@ -9,7 +9,7 @@ import Foundation
 
 class ShowsListViewModel {
     
-    let webService: WebService
+    let webService: WebServiceProtocol
     
     var isLoading: Box<Bool>
     

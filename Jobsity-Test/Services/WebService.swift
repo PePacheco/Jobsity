@@ -8,13 +8,18 @@
 import Foundation
 import UIKit
 
+protocol WebServiceProtocol {
+    func fetchShows(handler: @escaping (Result<[Show], WebServiceError>) -> Void)
+    func fetchEpisodes(showId: Int,handler: @escaping (Result<[Episode], WebServiceError>) -> Void)
+}
+
 enum WebServiceError: Error {
     case badUrlError
     case parsingJsonError
     case noDataError
 }
 
-struct WebService {
+struct WebService: WebServiceProtocol {
     
     init() {}
     

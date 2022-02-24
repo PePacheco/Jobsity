@@ -9,7 +9,7 @@ import Foundation
 
 class ShowDetailsViewModel {
     
-    let webService: WebService
+    let webService: WebServiceProtocol
     let genres: String
     let name: String
     let imageURL: URL?
