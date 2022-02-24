@@ -10,7 +10,7 @@ import Foundation
 
 class WebServiceMock: WebServiceProtocol {
 
-    var shows = [Show]()
+    var shows = [Show(id: 1, url: "", name: "", type: "", language: "", genres: [], schedule: Schedule(time: "", days: [""]), image: Image(medium: "", original: ""), summary: "")]
     var fetchShowsError: WebServiceError?
     
     func fetchShows(handler: @escaping (Result<[Show], WebServiceError>) -> Void) {
