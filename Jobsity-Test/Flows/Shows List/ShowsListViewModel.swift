@@ -16,7 +16,7 @@ class ShowsListViewModel {
     var shows: Box<[Show]>
     var filteredShows: Box<[Show]>
     
-    init(webService: WebService = WebService()) {
+    init(webService: WebServiceProtocol = WebService()) {
         self.webService = webService
         self.isLoading = Box(false)
         self.shows = Box([])

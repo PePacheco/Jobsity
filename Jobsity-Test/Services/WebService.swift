@@ -19,7 +19,7 @@ enum WebServiceError: Error {
     case noDataError
 }
 
-struct WebService: WebServiceProtocol {
+class WebService: WebServiceProtocol {
     
     init() {}
     

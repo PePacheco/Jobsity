@@ -19,7 +19,7 @@ class ShowDetailsViewModel {
     
     var seasons: Box<[Int: [Episode]]>
     
-    init(webService: WebService = WebService(), show: Show) {
+    init(webService: WebServiceProtocol = WebService(), show: Show) {
         self.webService = webService
         self.genres = show.genres.joined(separator: ", ")
         self.name = show.name
