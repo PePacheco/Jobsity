@@ -27,7 +27,7 @@ class TestShowsListViewModel: XCTestCase {
     
     func testInitViewModel() {
         XCTAssert(!viewModel!.isLoading.value)
-        XCTAssert(viewModel!.shows.value.count == 1)
+        XCTAssert(viewModel!.shows.value.count == 0)
     }
 
 }
