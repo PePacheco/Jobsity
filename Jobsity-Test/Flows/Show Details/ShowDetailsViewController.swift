@@ -76,8 +76,8 @@ extension ShowDetailsViewController: UITableViewDataSource, UITableViewDelegate 
         let viewModel = viewModel else {
             return UITableViewCell()
         }
-        let model = viewModel.fetchEpisode(at: indexPath)
-        cell.configure(name: model.name, episodeCount: "Episode \(model.number)")
+        let cellViewModel = viewModel.fetchEpisodeViewModel(at: indexPath)
+        cell.configure(name: cellViewModel.name, episodeCount: cellViewModel.episodeCount)
         return cell
     }
     

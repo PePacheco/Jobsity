@@ -43,8 +43,24 @@ class ShowDetailsViewModel {
         }
     }
     
+    func fetchEpisodeViewModel(at indexPath: IndexPath) -> ShowEpisodeCellViewModel {
+        return ShowEpisodeCellViewModel(with: seasons.value[indexPath.section + 1, default: []][indexPath.row])
+    }
+    
     func fetchEpisode(at indexPath: IndexPath) -> Episode {
         return seasons.value[indexPath.section + 1, default: []][indexPath.row]
+    }
+    
+}
+
+class ShowEpisodeCellViewModel {
+    
+    let episodeCount: String
+    let name: String
+    
+    init(with model: Episode) {
+        self.episodeCount = "Episode \(model.number)"
+        self.name = model.name
     }
     
 }
