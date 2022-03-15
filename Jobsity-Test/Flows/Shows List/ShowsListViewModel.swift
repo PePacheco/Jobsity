@@ -15,12 +15,14 @@ class ShowsListViewModel {
     
     var shows: Box<[Show]>
     var filteredShows: Box<[Show]>
+    var error: Box<String>
     
     init(webService: WebServiceProtocol = WebService()) {
         self.webService = webService
         self.isLoading = Box(false)
         self.shows = Box([])
         self.filteredShows = Box([])
+        self.error = Box("")
     }
     
     func fetchShows() {
@@ -33,7 +35,7 @@ class ShowsListViewModel {
                 self?.filteredShows.value = shows
                 self?.isLoading.value = false
             case .failure(_):
-                break
+                self?.error.value = "Something went wrong while fetching the shows"
             }
         }
     }

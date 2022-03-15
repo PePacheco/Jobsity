@@ -57,6 +57,12 @@ class ShowsListViewController: UIViewController, Coordinating {
                 self?.seriesTableView.reloadData()
             }
         }
+        
+        viewModel.error.bind {[weak self] error in
+            DispatchQueue.main.async {
+                self?.presentAlert(message: error)
+            }
+        }
     }
     
 }
