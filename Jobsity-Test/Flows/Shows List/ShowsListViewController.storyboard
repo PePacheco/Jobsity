@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -34,18 +34,18 @@
                                                         <constraint firstAttribute="width" constant="72" id="GFf-Vq-vHt"/>
                                                     </constraints>
                                                 </imageView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="6XZ-uc-3mj">
-                                                    <rect key="frame" x="108" y="63.5" width="182" height="44.5"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="6XZ-uc-3mj">
+                                                    <rect key="frame" x="108" y="27" width="190" height="117"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" verticalCompressionResistancePriority="751" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vCh-sh-JoL">
-                                                            <rect key="frame" x="0.0" y="0.0" width="46.5" height="20.5"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="44.5" height="19.5"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genres" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="avb-Tw-BIW">
-                                                            <rect key="frame" x="0.0" y="27.5" width="46.5" height="17"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <rect key="frame" x="0.0" y="101" width="43.5" height="16"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -80,11 +80,12 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="glx-FU-Ntb" secondAttribute="trailing" constant="16" id="2ip-yo-t20"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="6XZ-uc-3mj" secondAttribute="bottom" constant="16" id="3AZ-PW-bGc"/>
                                                 <constraint firstItem="glx-FU-Ntb" firstAttribute="centerY" secondItem="gdY-md-POI" secondAttribute="centerY" id="BCK-3f-1QE"/>
-                                                <constraint firstItem="6XZ-uc-3mj" firstAttribute="centerY" secondItem="gdY-md-POI" secondAttribute="centerY" id="KLR-Ix-IcV"/>
+                                                <constraint firstItem="6XZ-uc-3mj" firstAttribute="top" secondItem="gdY-md-POI" secondAttribute="topMargin" constant="16" id="HAa-Q5-kzd"/>
                                                 <constraint firstItem="3pa-XT-oUB" firstAttribute="centerY" secondItem="gdY-md-POI" secondAttribute="centerY" id="Sjy-73-59W"/>
                                                 <constraint firstItem="C8I-2H-QBO" firstAttribute="leading" secondItem="gdY-md-POI" secondAttribute="leadingMargin" id="V0C-LE-iGz"/>
-                                                <constraint firstItem="3pa-XT-oUB" firstAttribute="leading" secondItem="6XZ-uc-3mj" secondAttribute="trailing" constant="16" id="b6h-a4-cks"/>
+                                                <constraint firstItem="3pa-XT-oUB" firstAttribute="leading" secondItem="6XZ-uc-3mj" secondAttribute="trailing" constant="8" id="b6h-a4-cks"/>
                                                 <constraint firstItem="C8I-2H-QBO" firstAttribute="top" secondItem="gdY-md-POI" secondAttribute="topMargin" id="e4n-cL-8Iu"/>
                                                 <constraint firstItem="6XZ-uc-3mj" firstAttribute="leading" secondItem="C8I-2H-QBO" secondAttribute="trailing" constant="16" id="iHh-16-EPA"/>
                                                 <constraint firstItem="glx-FU-Ntb" firstAttribute="leading" secondItem="3pa-XT-oUB" secondAttribute="trailing" constant="8" id="rxL-iD-Kyv"/>
